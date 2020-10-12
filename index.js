@@ -1,6 +1,7 @@
 const express =  require ('express')
 const app = express()
 const port = 3000
+var router = express.Router();
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -8,20 +9,34 @@ app.use(function(req, res, next) {
     next();
    });
 
+router.get('/', function(req, res, next) {
+   // res.render('index', { title: 'Express' });
+   res.json('EXPRESSS is on Azure!!!')
+  });
+  
+router.get('/test', function(req,res,next){
 
-app.get('/', (req,res)=>{
-    //res.send('Hello World')
-    res.json('Hello World')
+    res.json('Test')
 })
 
-app.get('/test', (req,res)=>{
-    //res.send('Test-1')
-    res.json('Test-1')
+router.get('/test2', function(req,res,next){
+
+    res.json('Test-2')
 })
-app.get('/test2', (req,res)=>{
-    //res.send('Test2')
-    res.send('Test-2')
-})
+
+// app.get('/', (req,res)=>{
+//     //res.send('Hello World')
+//     res.json('Hello World')
+// })
+
+// app.get('/test', (req,res)=>{
+//     //res.send('Test-1')
+//     res.json('Test-1')
+// })
+// app.get('/test2', (req,res)=>{
+//     //res.send('Test2')
+//     res.send('Test-2')
+// })
 
 // app.get('/test3', (req,res)=>{
 //     var num1=2, num2=0, num3;
@@ -30,7 +45,11 @@ app.get('/test2', (req,res)=>{
 //     res.send(num3)
 // })
 
-app.listen(port, ()=>{
-    console.log(`Listening to port ${port}!`)
-})
 
+/* GET home page. */
+
+// app.listen(port, ()=>{
+//     console.log(`Listening to port ${port}!`)
+// })
+
+module.exports = app;
